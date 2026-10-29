@@ -137,10 +137,6 @@ func NewOCPPFromConfig(ctx context.Context, other map[string]any) (api.Charger, 
 		implement.Has(c, implement.PhaseVoltages(c.conn.Voltages))
 	}
 
-	if c.cp.HasMeasurement(types.MeasurandSoC) {
-		implement.Has(c, implement.Battery(c.conn.Soc))
-	}
-
 	if c.cp.PhaseSwitching {
 		implement.Has(c, implement.PhaseSwitcher(c.phases1p3p))
 	}
